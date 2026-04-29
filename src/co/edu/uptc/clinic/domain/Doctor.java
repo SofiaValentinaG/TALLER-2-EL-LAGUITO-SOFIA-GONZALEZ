@@ -1,0 +1,81 @@
+package co.edu.uptc.clinic.domain;
+
+import java.util.Objects;
+
+import co.edu.uptc.clinic.enums.IdentificationType;
+
+public class Doctor {
+	private IdentificationType identificationType;
+	private int medicalId;
+	private String firstName;
+	private String LastName;
+	private String speciality;
+	private int yearsOfExperience;
+	public Doctor(IdentificationType identificationType, int medicalId, String firstName, String lastName,
+			String speciality, int yearsOfExperience) {
+		super();
+		this.identificationType = identificationType;
+		this.medicalId = medicalId;
+		this.firstName = firstName;
+		LastName = lastName;
+		this.speciality = speciality;
+		this.yearsOfExperience = yearsOfExperience;
+	}
+	public IdentificationType getIdentificationType() {
+		return identificationType;
+	}
+	public void setIdentificationType(IdentificationType identificationType) {
+		this.identificationType = identificationType;
+	}
+	public int getMedicalId() {
+		return medicalId;
+	}
+	public void setMedicalId(int medicalId) {
+		this.medicalId = medicalId;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return LastName;
+	}
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+	public String getSpeciality() {
+		return speciality;
+	}
+	public void setSpeciality(String speciality) {
+		this.speciality = speciality;
+	}
+	public int getYearsOfExperience() {
+		return yearsOfExperience;
+	}
+	public void setYearsOfExperience(int yearsOfExperience) {
+		this.yearsOfExperience = yearsOfExperience;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		
+		return Objects.hash(this.identificationType,this.medicalId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj == null) {
+			return false;
+		}
+		Doctor auxDoctor = (Doctor) obj;
+		return auxDoctor.getIdentificationType().equals(this.identificationType) && auxDoctor.getMedicalId()== this.medicalId;  
+			
+	
+	}
+
+
+}
