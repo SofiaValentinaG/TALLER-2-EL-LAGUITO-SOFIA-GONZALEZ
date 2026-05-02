@@ -2,6 +2,7 @@ package co.edu.uptc.clinic.repository;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.Objects;
 import co.edu.uptc.clinic.domain.Doctor;
 
@@ -9,9 +10,9 @@ public class DoctorRepository {
 	
 	private Set<Doctor> doctors;
 
-	public DoctorRepository(Set<Doctor> doctors) {
-		super();
-		this.doctors = new HashSet<>();
+	public DoctorRepository() {
+	
+		this.doctors = new TreeSet<>();
 	}
 	
 	public boolean addDoctor(Doctor doctor) {
