@@ -9,8 +9,8 @@ public class PatientRepository {
 	
 	private Set<Patient> patients;
 
-	public PatientRepository(Set<Patient> doctors) {
-		super();
+	public PatientRepository() {
+		
 		this.patients= new HashSet<>();
 	}
 	

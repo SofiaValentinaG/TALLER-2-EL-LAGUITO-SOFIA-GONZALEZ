@@ -39,6 +39,8 @@ public class DoctorService {
 	}
 	
 	public Set<Doctor> findAll(){
+		
+		
 		return this.doctorRepository.findAll();
 	}
 	
