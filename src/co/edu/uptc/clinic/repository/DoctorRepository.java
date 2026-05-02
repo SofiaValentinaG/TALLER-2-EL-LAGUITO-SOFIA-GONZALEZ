@@ -72,6 +72,11 @@ public class DoctorRepository {
 		    return this.doctors.removeIf(doctor -> 
 		        doctor.getMedicalId() == medicalId);
 		}
+
+
+	 
+	 
+	 
 	}
 	
 

@@ -17,7 +17,7 @@ public class Doctor {
 		this.identificationType = identificationType;
 		this.medicalId = medicalId;
 		this.firstName = firstName;
-		lastName = lastName;
+		this.lastName = lastName;
 		this.speciality = speciality;
 		this.yearsOfExperience = yearsOfExperience;
 	}
@@ -43,7 +43,7 @@ public class Doctor {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
-		lastName = lastName;
+		this.lastName = lastName;
 	}
 	public String getSpeciality() {
 		return speciality;
