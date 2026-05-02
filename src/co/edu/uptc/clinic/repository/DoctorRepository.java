@@ -7,7 +7,7 @@ import co.edu.uptc.clinic.domain.Doctor;
 
 public class DoctorRepository {
 	
-	Set<Doctor> doctors;
+	private Set<Doctor> doctors;
 
 	public DoctorRepository(Set<Doctor> doctors) {
 		super();
@@ -24,7 +24,7 @@ public class DoctorRepository {
 	
 	public Doctor findDoctorById(int idDoctor) {
 		for(Doctor i:this.doctors) {
-			if(i.getIdentificationType().equals(idDoctor)) {
+			if(i.getMedicalId()== idDoctor) {
 				return i;
 			}
 		}

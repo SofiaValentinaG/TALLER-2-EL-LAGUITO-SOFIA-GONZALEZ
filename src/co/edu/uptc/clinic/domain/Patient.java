@@ -6,31 +6,31 @@ import java.util.Set;
 import co.edu.uptc.clinic.enums.*;
 
 public class Patient {
-	private IdentificationType identificationType;
+	private IdentificationTypeEnum identificationType;
 	private int idPatient;
 	private String firstName;
-	private String LastName;
+	private String lastName;
 	private String email;
 	private Set<String> medicationHistory;
-	private Priority priority;
+	private PriorityEnum priority;
 	
-	public Patient(IdentificationType identificationType, int idPatient, String firstName, String lastName,String email,
-		Priority priority) {
+	public Patient(IdentificationTypeEnum identificationType, int idPatient, String firstName, String lastName,String email,
+		PriorityEnum priority) {
 		super();
 		this.identificationType = identificationType;
 		this.idPatient = idPatient;
 		this.firstName = firstName;
-		this.LastName = lastName;
+		this.lastName = lastName;
 		this.email=email;
 		this.medicationHistory = new LinkedHashSet<>();
 		this.priority = priority;
 	}
 
-	public IdentificationType getIdentificationType() {
+	public IdentificationTypeEnum getIdentificationType() {
 		return identificationType;
 	}
 
-	public void setIdentificationType(IdentificationType identificationType) {
+	public void setIdentificationType(IdentificationTypeEnum identificationType) {
 		this.identificationType = identificationType;
 	}
 
@@ -51,11 +51,11 @@ public class Patient {
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		lastName = lastName;
 	}
 
 	public Set<String> getMedicationHistory() {
@@ -66,11 +66,11 @@ public class Patient {
 		this.medicationHistory = medicationHistory;
 	}
 
-	public Priority getPriority() {
+	public PriorityEnum getPriority() {
 		return priority;
 	}
 
-	public void setPriority(Priority priority) {
+	public void setPriority(PriorityEnum priority) {
 		this.priority = priority;
 	}
 	
@@ -86,7 +86,7 @@ public class Patient {
 	@Override
 	public int hashCode() {
 		
-		return Objects.hash(this.identificationType,this.idPatient);
+		return Objects.hash(this.identificationType,this.idPatient, this.email);
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class Patient {
 		
 		    return "=== PATIENT ===" +
 		           "• ID: " + identificationType + " - " + idPatient + "\n" +
-		           "• Name: " + firstName + " " + LastName + "\n" +
+		           "• Name: " + firstName + " " + lastName + "\n" +
 		           "• Email: " + email + "\n" +
 		           "• Priority: " + priority + "\n" +
 		           "• Medication History: " + (medicationHistory.isEmpty() ? "None" : medicationHistory) + "\n" +

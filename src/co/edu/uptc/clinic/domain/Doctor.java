@@ -2,29 +2,29 @@ package co.edu.uptc.clinic.domain;
 
 import java.util.Objects;
 
-import co.edu.uptc.clinic.enums.IdentificationType;
+import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
 
 public class Doctor {
-	private IdentificationType identificationType;
+	private IdentificationTypeEnum identificationType;
 	private int medicalId;
 	private String firstName;
-	private String LastName;
+	private String lastName;
 	private String speciality;
 	private int yearsOfExperience;
-	public Doctor(IdentificationType identificationType, int medicalId, String firstName, String lastName,
+	public Doctor(IdentificationTypeEnum identificationType, int medicalId, String firstName, String lastName,
 			String speciality, int yearsOfExperience) {
 		super();
 		this.identificationType = identificationType;
 		this.medicalId = medicalId;
 		this.firstName = firstName;
-		LastName = lastName;
+		lastName = lastName;
 		this.speciality = speciality;
 		this.yearsOfExperience = yearsOfExperience;
 	}
-	public IdentificationType getIdentificationType() {
+	public IdentificationTypeEnum getIdentificationType() {
 		return identificationType;
 	}
-	public void setIdentificationType(IdentificationType identificationType) {
+	public void setIdentificationType(IdentificationTypeEnum identificationType) {
 		this.identificationType = identificationType;
 	}
 	public int getMedicalId() {
@@ -40,10 +40,10 @@ public class Doctor {
 		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		lastName = lastName;
 	}
 	public String getSpeciality() {
 		return speciality;

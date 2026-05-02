@@ -7,7 +7,7 @@ import co.edu.uptc.clinic.domain.Patient;
 
 public class PatientRepository {
 	
-	Set<Patient> patients;
+	private Set<Patient> patients;
 
 	public PatientRepository(Set<Patient> doctors) {
 		super();
@@ -24,7 +24,7 @@ public class PatientRepository {
 	
 	public Patient findPatientById(int idPatient) {
 		for(Patient i:this.patients) {
-			if(i.getIdentificationType().equals(idPatient)) {
+			if(i.getIdPatient()==idPatient) {
 				return i;
 			}
 		}
