@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
 
-public class Doctor {
+public class Doctor implements Comparable <Doctor>{
 	private IdentificationTypeEnum identificationType;
 	private int medicalId;
 	private String firstName;
@@ -76,6 +76,17 @@ public class Doctor {
 			
 	
 	}
+	@Override
+	public int compareTo(Doctor other) {
+		  int compareExp = this.yearsOfExperience - other.yearsOfExperience;
+
+		    if (compareExp != 0) {
+		        return compareExp;
+		    }
+
+		    return this.getFirstName().compareTo(other.getFirstName());
+	}
+
 
 
 }
