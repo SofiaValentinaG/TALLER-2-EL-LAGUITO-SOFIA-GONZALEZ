@@ -55,7 +55,7 @@ public class Patient {
 	}
 
 	public void setLastName(String lastName) {
-		lastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public Set<String> getMedicationHistory() {

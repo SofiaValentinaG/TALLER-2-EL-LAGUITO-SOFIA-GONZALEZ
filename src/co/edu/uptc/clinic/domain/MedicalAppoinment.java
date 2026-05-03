@@ -3,7 +3,7 @@ package co.edu.uptc.clinic.domain;
 import java.util.Date;
 import java.util.Objects;
 import co.edu.uptc.clinic.enums.*;
-public class MedicalAppoinment {
+public class MedicalAppoinment implements Comparable <MedicalAppoinment> {
 
     private int idMedicalAppoiment;
     private Date timeAppoinmet;
@@ -85,4 +85,16 @@ public class MedicalAppoinment {
                "• Doctor: " + doctor.getFirstName() + " " + doctor.getLastName() + "\n" +
                "============================";
     }
+
+	@Override
+	public int compareTo(MedicalAppoinment other) {
+		  int compareTime = this.timeAppoinmet.compareTo(other.timeAppoinmet);
+
+		    if (compareTime != 0) {
+		        return compareTime;
+		    }
+
+		  
+		    return other.getPriority().getValue() - this.getPriority().getValue();
+	}
 }

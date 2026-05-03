@@ -40,7 +40,7 @@ public class MedicalAppoinmentRepository {
 	}
 	
 	
-    public boolean updatePatient(MedicalAppoinment newMedicalAppoinment) {
+    public boolean updateMedicalAppoinment(MedicalAppoinment newMedicalAppoinment) {
 		 
 		 MedicalAppoinment oldMedicalAppoinment= this.findById(newMedicalAppoinment.getIdMedicalAppoiment());
 		 if(!Objects.isNull(oldMedicalAppoinment)) {
@@ -62,9 +62,8 @@ public class MedicalAppoinmentRepository {
 				
 				
 				
-				
-				this.medicalAppoinments.add(newMedicalAppoinment);
 				this.medicalAppoinments.remove(oldMedicalAppoinment);
+				this.medicalAppoinments.add(newMedicalAppoinment);
 				
 				return true;
 			 
