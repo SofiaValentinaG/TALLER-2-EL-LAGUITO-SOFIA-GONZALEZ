@@ -25,6 +25,7 @@ public class Doctor implements Comparable <Doctor>{
 		return identificationType;
 	}
 	public void setIdentificationType(IdentificationTypeEnum identificationType) {
+		
 		this.identificationType = identificationType;
 	}
 	public int getMedicalId() {

@@ -31,7 +31,7 @@ public class PatientService {
 	}
 	
 	
-	public boolean addDoctor(Patient patient) {
+	public boolean addPatient(Patient patient) {
 		if(this.validatePatient(patient)) {
 			return this.patientRepository.addPatient(patient);
 		}
