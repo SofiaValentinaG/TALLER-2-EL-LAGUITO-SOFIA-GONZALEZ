@@ -6,5 +6,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="resource/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="resource/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="resource/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="resource/junit-4.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
