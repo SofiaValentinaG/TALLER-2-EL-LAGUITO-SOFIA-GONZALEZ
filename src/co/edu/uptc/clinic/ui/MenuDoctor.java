@@ -2,22 +2,23 @@ package co.edu.uptc.clinic.ui;
 
 import javax.swing.JOptionPane;
 
-import co.edu.uptc.clinic.domain.Patient;
+import co.edu.uptc.clinic.domain.Doctor;
 import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
-import co.edu.uptc.clinic.enums.PriorityEnum;
-import co.edu.uptc.clinic.service.PatientService;
 
-public class MenuPatient {
+import co.edu.uptc.clinic.service.DoctorService;
 
-    private PatientService patientService = new PatientService();
 
-    public void startMenuPatient() {
+public class MenuDoctor {
+
+    private DoctorService doctorService= new DoctorService();
+
+    public void startMenuDoctor() {
 
         while (true) {
 
-            String optionPatient = JOptionPane.showInputDialog(
+            String optionDoctor = JOptionPane.showInputDialog(
                 "===== MENÚ PACIENTE =====\n" +
-                "1. Agregar Paciente\n" +
+                "1. Agregar Doctor\n" +
                 "2. Mostrar todos\n" +
                 "3. Buscar por ID\n" +
                 "4. Actualizar\n" +
@@ -25,28 +26,26 @@ public class MenuPatient {
                 "6. Volver"
             );
 
-            if (optionPatient == null) break;
+            if (optionDoctor == null) break;
 
-            switch(optionPatient) {
+            switch(optionDoctor) {
 
             case "1":
-                Patient patient = createPatient();
-                if (patient != null) {
-                    patientService.addPatient(patient);
+                Doctor doctor = createDoctor();
+                if (doctor != null) {
+                   doctorService.addDoctor(doctor);
                 }
                 break;
 
             case "2":
-                patientService.findAll();
-                 
-                
+                 doctorService.findAll();
                 break;
 
             case "3":
                 String idFind = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idFind)) break;
 
-                Patient found = patientService.findById(Integer.parseInt(idFind));
+                Doctor found = doctorService.findById(Integer.parseInt(idFind));
 
                 JOptionPane.showMessageDialog(null,
                     found != null ? found : "No encontrado");
@@ -56,10 +55,10 @@ public class MenuPatient {
                 String idUp = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idUp)) break;
 
-                Patient update = updatePatient(Integer.parseInt(idUp));
+                Doctor update = updateDoctor(Integer.parseInt(idUp));
 
                 if (update != null) {
-                    patientService.updatePatient(update);
+                    doctorService.updateDoctor(update);
                 }
                 break;
 
@@ -67,7 +66,7 @@ public class MenuPatient {
                 String idDel = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idDel)) break;
 
-                patientService.deletePatient(Integer.parseInt(idDel));
+                doctorService.deleteDoctor(Integer.parseInt(idDel));
                 break;
 
             case "6":
@@ -78,14 +77,15 @@ public class MenuPatient {
             }
         }
     }
-    public static Patient updatePatient(int id) {
+    public static Doctor updateDoctor(int id) {
+    	
  	   String firstName = JOptionPane.showInputDialog("Nombre:");
         String lastName = JOptionPane.showInputDialog("Apellido:");
-        String email = JOptionPane.showInputDialog("Email:");
-        PriorityEnum priority = (PriorityEnum) JOptionPane.showInputDialog(null,"Seleccione la prioridad:","Prioridad", JOptionPane.QUESTION_MESSAGE,
-     	        null,
-     	        PriorityEnum.values(), 
-     	        PriorityEnum.LOW     );
+        String speciality = JOptionPane.showInputDialog("speciality:");
+        String yearsOfExperience = JOptionPane.showInputDialog("Años de experiencia:");
+        int years = Integer.parseInt(yearsOfExperience);
+        
+  
         IdentificationTypeEnum identificationType = (IdentificationTypeEnum) JOptionPane.showInputDialog(
      	        null,
      	        "Seleccione el tipo de identificación:",
@@ -97,28 +97,29 @@ public class MenuPatient {
      	);
         
 
-        return  new Patient (identificationType,id, firstName, lastName, email,priority);
+        return  new Doctor(identificationType,id, firstName, lastName,
+    			speciality,  years);
  	   
     }
     
-    public static Patient createPatient() {
+    public static Doctor createDoctor() {
  	
- 	   String idPatient = JOptionPane.showInputDialog("ID paciente:");
-        if (!isNumber(idPatient)) {
+ 	   String idDoctor = JOptionPane.showInputDialog("ID paciente:");
+        if (!isNumber(idDoctor)) {
      	   JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido");
      	    return null;
      	 
         }
 
-        int id = Integer.parseInt(idPatient);
+        int id = Integer.parseInt(idDoctor);
 
         String firstName = JOptionPane.showInputDialog("Nombre:");
         String lastName = JOptionPane.showInputDialog("Apellido:");
-        String email = JOptionPane.showInputDialog("Email:");
-        PriorityEnum priority = (PriorityEnum) JOptionPane.showInputDialog(null,"Seleccione la prioridad:","Prioridad", JOptionPane.QUESTION_MESSAGE,
-     	        null,
-     	        PriorityEnum.values(), 
-     	        PriorityEnum.LOW     );
+        String speciality = JOptionPane.showInputDialog("speciality:");
+        String yearsOfExperience = JOptionPane.showInputDialog("Años de experiencia:");
+        int years = Integer.parseInt(yearsOfExperience);
+        
+  
         IdentificationTypeEnum identificationType = (IdentificationTypeEnum) JOptionPane.showInputDialog(
      	        null,
      	        "Seleccione el tipo de identificación:",
@@ -130,7 +131,8 @@ public class MenuPatient {
      	);
         
 
-        return  new Patient (identificationType,id, firstName, lastName, email,priority);
+        return  new Doctor(identificationType,id, firstName, lastName,
+    			speciality,  years);
  	   
     }
     
