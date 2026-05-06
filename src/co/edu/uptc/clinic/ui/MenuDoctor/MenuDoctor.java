@@ -1,4 +1,4 @@
-package co.edu.uptc.clinic.MenuDoctor;
+package co.edu.uptc.clinic.ui.MenuDoctor;
 
 import javax.swing.JOptionPane;
 
@@ -11,8 +11,13 @@ import co.edu.uptc.clinic.service.DoctorService;
 public class MenuDoctor {
 
     private DoctorService doctorService= new DoctorService();
+    
 
-    public void startMenuDoctor() {
+    public MenuDoctor(DoctorService doctorService) {
+		super();
+		this.doctorService = doctorService;
+	}
+	public void startMenuDoctor() {
 
         while (true) {
 

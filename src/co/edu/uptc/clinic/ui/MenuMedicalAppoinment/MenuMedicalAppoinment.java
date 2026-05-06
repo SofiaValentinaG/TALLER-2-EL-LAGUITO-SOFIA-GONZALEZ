@@ -1,4 +1,4 @@
-package co.edu.uptc.clinic.MenuMedicalAppoinment;
+package co.edu.uptc.clinic.ui.MenuMedicalAppoinment;
 
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -15,9 +15,19 @@ import co.edu.uptc.clinic.service.PatientService;
 
 public class MenuMedicalAppoinment {
 
-    private MedicalAppoinmentService medicalAppoinmentService = new MedicalAppoinmentService();
-    private PatientService patientService = new PatientService();
-    private DoctorService doctorService = new DoctorService();
+	private MedicalAppoinmentService medicalAppoinmentService;
+	private PatientService patientService;
+	private DoctorService doctorService;
+
+	public MenuMedicalAppoinment(
+	    MedicalAppoinmentService medicalAppoinmentService,
+	    PatientService patientService,
+	    DoctorService doctorService
+	) {
+	    this.medicalAppoinmentService = medicalAppoinmentService;
+	    this.patientService = patientService;
+	    this.doctorService = doctorService;
+	}
 
     public void startMenuMedicalAppoinment() {
 
@@ -47,12 +57,12 @@ public class MenuMedicalAppoinment {
             case "2":
             	 String result = "";
 
-            	    for (MedicalAppoinment m : medicalAppoinmentService.findAll()) {
-            	        result += m.toString() + "\n\n";
+            	    for (MedicalAppoinment i: medicalAppoinmentService.findAll()) {
+            	        result += i.toString() + "\n\n";
             	    }
 
             	    if (result.isEmpty()) {
-            	        result = "No hay pacientes registrados";
+            	        result = "No hay citas registradas";
             	    }
 
             	    JOptionPane.showMessageDialog(null, result);

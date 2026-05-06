@@ -1,18 +1,29 @@
 package co.edu.uptc.clinic.ui;
 import javax.swing.JOptionPane;
 
-import co.edu.uptc.clinic.MenuDoctor.MenuDoctor;
-import co.edu.uptc.clinic.MenuMedicalAppoinment.MenuMedicalAppoinment;
-import co.edu.uptc.clinic.MenuPatient.ui.MenuPatient;
+import co.edu.uptc.clinic.service.DoctorService;
+import co.edu.uptc.clinic.service.MedicalAppoinmentService;
+import co.edu.uptc.clinic.service.PatientService;
+import co.edu.uptc.clinic.ui.MenuDoctor.MenuDoctor;
+import co.edu.uptc.clinic.ui.MenuMedicalAppoinment.MenuMedicalAppoinment;
+import co.edu.uptc.clinic.ui.MenuPatient.MenuPatient;
 
 
 
 public class Main {
    public static void main(String []args) {
 	   
-	   MenuDoctor menuDoctor= new MenuDoctor();
-	   MenuPatient menuPatient= new MenuPatient();
-	   MenuMedicalAppoinment menuMedicalAppoinment= new MenuMedicalAppoinment();
+	   PatientService patientService = new PatientService();
+	   
+       DoctorService doctorService = new DoctorService();
+       
+       MedicalAppoinmentService medicalAppoinmentService = new MedicalAppoinmentService();
+
+    
+       MenuPatient menuPatient = new MenuPatient(patientService);
+       MenuDoctor menuDoctor = new MenuDoctor(doctorService);
+       MenuMedicalAppoinment menuMedicalAppoinment =
+           new MenuMedicalAppoinment(medicalAppoinmentService, patientService, doctorService);
 	   
 	   
 	   

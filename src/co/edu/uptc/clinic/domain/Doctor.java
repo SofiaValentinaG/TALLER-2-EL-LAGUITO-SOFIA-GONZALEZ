@@ -10,7 +10,7 @@ import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
  * Permite almacenar información personal, profesional y realizar
  * comparaciones entre doctores según su experiencia.
  * 
- * @author Sofia
+ * @author SofiaValeninaG
 */
 public class Doctor implements Comparable <Doctor>{
 	 /** Atributo que determina el tipo de identificación del doctor es enum */
