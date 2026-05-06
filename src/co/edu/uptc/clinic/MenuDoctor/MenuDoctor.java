@@ -1,4 +1,4 @@
-package co.edu.uptc.clinic.ui;
+package co.edu.uptc.clinic.MenuDoctor;
 
 import javax.swing.JOptionPane;
 
@@ -38,7 +38,17 @@ public class MenuDoctor {
                 break;
 
             case "2":
-                 doctorService.findAll();
+            	 String result = "";
+
+            	    for (Doctor d : doctorService.findAll()) {
+            	        result += d.toString() + "\n\n";
+            	    }
+
+            	    if (result.isEmpty()) {
+            	        result = "No hay doctores registrados";
+            	    }
+
+            	    JOptionPane.showMessageDialog(null, result);
                 break;
 
             case "3":
@@ -104,7 +114,7 @@ public class MenuDoctor {
     
     public static Doctor createDoctor() {
  	
- 	   String idDoctor = JOptionPane.showInputDialog("ID paciente:");
+ 	   String idDoctor = JOptionPane.showInputDialog("ID doctor:");
         if (!isNumber(idDoctor)) {
      	   JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido");
      	    return null;

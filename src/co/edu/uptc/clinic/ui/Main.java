@@ -1,17 +1,20 @@
 package co.edu.uptc.clinic.ui;
 import javax.swing.JOptionPane;
 
-import co.edu.uptc.clinic.domain.Patient;
-import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
-import co.edu.uptc.clinic.enums.PriorityEnum;
-import co.edu.uptc.clinic.service.*;
+import co.edu.uptc.clinic.MenuDoctor.MenuDoctor;
+import co.edu.uptc.clinic.MenuMedicalAppoinment.MenuMedicalAppoinment;
+import co.edu.uptc.clinic.MenuPatient.ui.MenuPatient;
+
+
 
 public class Main {
    public static void main(String []args) {
 	   
-	   PatientService patientService= new PatientService();
-	   MedicalAppoinmentService medicalAppoinmentService = new MedicalAppoinmentService();
-	   DoctorService doctorService= new DoctorService();
+	   MenuDoctor menuDoctor= new MenuDoctor();
+	   MenuPatient menuPatient= new MenuPatient();
+	   MenuMedicalAppoinment menuMedicalAppoinment= new MenuMedicalAppoinment();
+	   
+	   
 	   
 	   
 	   while (true) {
@@ -29,6 +32,27 @@ public class Main {
            if(option== null) {
         	   JOptionPane.showMessageDialog(null, "Por favor ingrese una opcion valida");
         	   break;
+           }
+          
+           switch(option) {
+           case "1":
+        	   menuPatient.startMenuPatient();
+        	   break;
+        	   
+           case "2":
+        	   menuDoctor.startMenuDoctor();
+        	   
+        	   break;
+           case "3":
+        	   menuMedicalAppoinment.startMenuMedicalAppoinment();
+        	   break;
+           case "4":
+               return;
+
+           default:
+               javax.swing.JOptionPane.showMessageDialog(null, "Opción inválida");
+        	   
+        	   
            }
            
 	   }

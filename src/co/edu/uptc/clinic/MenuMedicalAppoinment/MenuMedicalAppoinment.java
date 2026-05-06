@@ -1,4 +1,4 @@
-package co.edu.uptc.clinic.ui;
+package co.edu.uptc.clinic.MenuMedicalAppoinment;
 
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -45,7 +45,17 @@ public class MenuMedicalAppoinment {
                 break;
 
             case "2":
-                medicalAppoinmentService.findAll();
+            	 String result = "";
+
+            	    for (MedicalAppoinment m : medicalAppoinmentService.findAll()) {
+            	        result += m.toString() + "\n\n";
+            	    }
+
+            	    if (result.isEmpty()) {
+            	        result = "No hay pacientes registrados";
+            	    }
+
+            	    JOptionPane.showMessageDialog(null, result);
                 break;
 
             case "3":

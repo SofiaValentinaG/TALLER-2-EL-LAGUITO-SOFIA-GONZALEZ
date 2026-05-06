@@ -87,7 +87,16 @@ public class Doctor implements Comparable <Doctor>{
 
 		    return this.getFirstName().compareTo(other.getFirstName());
 	}
-
+	@Override
+	public String toString() {
+	    return "\n=== DOCTOR ===\n" +
+	           "• ID: " + medicalId + "\n" +
+	           "• Tipo ID: " + identificationType + "\n" +
+	           "• Nombre: " + firstName + " " + lastName + "\n" +
+	           "• Especialidad: " + speciality + "\n" +
+	           "• Años de experiencia: " + yearsOfExperience + "\n" +
+	           "====================";
+	}
 
 
 }

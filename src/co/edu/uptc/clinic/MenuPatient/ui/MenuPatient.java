@@ -1,4 +1,4 @@
-package co.edu.uptc.clinic.ui;
+package co.edu.uptc.clinic.MenuPatient.ui;
 
 import javax.swing.JOptionPane;
 
@@ -37,8 +37,18 @@ public class MenuPatient {
                 break;
 
             case "2":
-                patientService.findAll();
-                 
+            	 String result = "";
+
+            	    for (Patient p : patientService.findAll()) {
+            	        result += p.toString() + "\n\n";
+            	    }
+
+            	    if (result.isEmpty()) {
+            	        result = "No hay pacientes registrados";
+            	    }
+
+            	    JOptionPane.showMessageDialog(null, result);
+               
                 
                 break;
 
