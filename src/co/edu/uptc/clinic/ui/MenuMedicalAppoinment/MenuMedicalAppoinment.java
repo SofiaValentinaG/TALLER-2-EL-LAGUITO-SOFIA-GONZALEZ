@@ -13,12 +13,32 @@ import co.edu.uptc.clinic.service.DoctorService;
 import co.edu.uptc.clinic.service.MedicalAppoinmentService;
 import co.edu.uptc.clinic.service.PatientService;
 
+/**
+ * <b>Descripción:</b> Clase encargada de gestionar
+ * el menú de citas médicas del sistema de la clínica.
+ * Permite agregar, mostrar, buscar, actualizar y eliminar citas médicas.
+ * 
+ * @author SofiaValentinaG
+ */
 public class MenuMedicalAppoinment {
 
+	/** Servicio encargado de la lógica de citas médicas */
 	private MedicalAppoinmentService medicalAppoinmentService;
+	
+	/** Servicio encargado de la lógica de pacientes */
 	private PatientService patientService;
+	
+	/** Servicio encargado de la lógica de doctores */
 	private DoctorService doctorService;
 
+	/**
+	 * <b>Descripción:</b> Constructor de la clase MenuMedicalAppoinment.
+	 * Inicializa los servicios necesarios para gestionar las citas.
+	 * 
+	 * @param medicalAppoinmentService Servicio de citas médicas
+	 * @param patientService Servicio de pacientes
+	 * @param doctorService Servicio de doctores
+	 */
 	public MenuMedicalAppoinment(
 	    MedicalAppoinmentService medicalAppoinmentService,
 	    PatientService patientService,
@@ -29,6 +49,11 @@ public class MenuMedicalAppoinment {
 	    this.doctorService = doctorService;
 	}
 
+	/**
+	 * <b>Descripción:</b> Método encargado de mostrar el menú
+	 * principal de citas médicas y ejecutar las opciones seleccionadas
+	 * por el usuario.
+	 */
     public void startMenuMedicalAppoinment() {
 
         while (true) {
@@ -106,6 +131,12 @@ public class MenuMedicalAppoinment {
     }
 
  
+    /**
+     * <b>Descripción:</b> Método encargado de crear una nueva
+     * cita médica solicitando los datos necesarios al usuario.
+     * 
+     * @return Objeto MedicalAppoinment creado o null si ocurre algún error
+     */
     public  MedicalAppoinment createMedicalAppoinment() {
     	
     	//Id de la cita
@@ -168,6 +199,13 @@ public class MenuMedicalAppoinment {
     }
 
 
+    /**
+     * <b>Descripción:</b> Método encargado de actualizar
+     * una cita médica existente.
+     * 
+     * @param id Identificador de la cita a actualizar
+     * @return Nueva cita médica actualizada o null si no existe
+     */
     public MedicalAppoinment updateMedicalAppoinment(int id) {
 
         MedicalAppoinment old = medicalAppoinmentService.findById(id);
@@ -214,6 +252,13 @@ public class MenuMedicalAppoinment {
     }
 
    
+    /**
+     * <b>Descripción:</b> Método encargado de validar
+     * si un texto contiene únicamente números.
+     * 
+     * @param text Texto a validar
+     * @return true si el texto es numérico, false en caso contrario
+     */
     public static boolean isNumber(String text) {
         if (text == null || text.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo vacío");

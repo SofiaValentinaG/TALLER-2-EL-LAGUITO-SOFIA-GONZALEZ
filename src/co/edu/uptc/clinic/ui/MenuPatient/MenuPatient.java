@@ -7,16 +7,36 @@ import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
 import co.edu.uptc.clinic.enums.PriorityEnum;
 import co.edu.uptc.clinic.service.PatientService;
 
+/**
+ * <b>Descripción:</b> Clase encargada de gestionar
+ * el menú de pacientes del sistema de la clínica.
+ * Permite agregar, mostrar, buscar, actualizar
+ * y eliminar pacientes.
+ * 
+ * @author SofiaValentinaG
+ */
 public class MenuPatient {
 
+	/** Servicio encargado de la lógica de pacientes */
     private PatientService patientService = new PatientService();
     
     
-
+    /**
+     * <b>Descripción:</b> Constructor de la clase MenuPatient.
+     * Inicializa el servicio de pacientes.
+     * 
+     * @param patientService Servicio encargado de gestionar pacientes
+     */
     public MenuPatient(PatientService patientService) {
 		super();
 		this.patientService = patientService;
 	}
+    
+    /**
+     * <b>Descripción:</b> Método encargado de mostrar
+     * el menú principal de pacientes y ejecutar
+     * las opciones seleccionadas por el usuario.
+     */
 	public void startMenuPatient() {
 
         while (true) {
@@ -94,6 +114,14 @@ public class MenuPatient {
             }
         }
     }
+    
+    /**
+     * <b>Descripción:</b> Método encargado de actualizar
+     * la información de un paciente existente.
+     * 
+     * @param id Identificador del paciente
+     * @return Objeto Patient actualizado
+     */
     public static Patient updatePatient(int id) {
  	   String firstName = JOptionPane.showInputDialog("Nombre:");
         String lastName = JOptionPane.showInputDialog("Apellido:");
@@ -112,9 +140,11 @@ public class MenuPatient {
      	        IdentificationTypeEnum.CC
      	);
         Patient patient=new Patient (identificationType,id, firstName, lastName, email,priority);
+        
         String medications = JOptionPane.showInputDialog(
                 "Ingrese los medicamentos separados por coma Ejemplo: Acetaminofen, Ibuprofeno,etc.."
         );
+        
         if (medications != null && !medications.isEmpty()) {
 
             String[] medsArray = medications.split(",");
@@ -130,6 +160,13 @@ public class MenuPatient {
  	   
     }
     
+    /**
+     * <b>Descripción:</b> Método encargado de crear
+     * un nuevo paciente solicitando los datos
+     * necesarios al usuario.
+     * 
+     * @return Objeto Patient creado o null si ocurre un error
+     */
     public static Patient createPatient() {
  	
  	   String idPatient = JOptionPane.showInputDialog("ID paciente:");
@@ -157,12 +194,14 @@ public class MenuPatient {
      	        IdentificationTypeEnum.values(),
      	        IdentificationTypeEnum.CC
      	);
+        
         Patient patient= new Patient (identificationType,id, firstName, lastName, email,priority);
   	   
-       
+        
         String medications = JOptionPane.showInputDialog(
                 "Ingrese los medicamentos separados por coma Ejemplo: Acetaminofen, Ibuprofeno,etc.."
         );
+        
         if (medications != null && !medications.isEmpty()) {
 
             String[] medsArray = medications.split(",");
@@ -177,6 +216,14 @@ public class MenuPatient {
  	   
     }
     
+    /**
+     * <b>Descripción:</b> Método encargado de validar
+     * si un texto contiene únicamente números.
+     * 
+     * @param text Texto a validar
+     * @return true si el texto es numérico,
+     * false en caso contrario
+     */
     public static boolean isNumber(String text) {
         if (text == null || text.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo vacío");

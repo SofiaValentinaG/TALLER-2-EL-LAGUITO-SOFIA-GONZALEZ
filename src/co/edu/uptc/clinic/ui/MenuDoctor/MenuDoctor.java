@@ -7,16 +7,39 @@ import co.edu.uptc.clinic.enums.IdentificationTypeEnum;
 
 import co.edu.uptc.clinic.service.DoctorService;
 
-
+/**
+ * <b>Descripción:</b> Clase encargada de gestionar el menú
+ * de doctores de la clínica mediante interfaces gráficas
+ * utilizando JOptionPane. <br>
+ * Permite agregar, buscar, actualizar, eliminar y mostrar
+ * doctores registrados en el sistema.
+ * 
+ * @author SofiaValentinaG
+ */
 public class MenuDoctor {
 
+	/**
+	 * Servicio encargado de gestionar las operaciones
+	 * relacionadas con los doctores.
+	 */
     private DoctorService doctorService= new DoctorService();
     
-
+    /**
+     * <b>Descripción:</b> Constructor de la clase MenuDoctor. <br>
+     * Inicializa el servicio de doctores.
+     * 
+     * @param doctorService Representa el servicio de doctores.
+     */
     public MenuDoctor(DoctorService doctorService) {
 		super();
 		this.doctorService = doctorService;
 	}
+    
+    /**
+     * <b>Descripción:</b> Método encargado de mostrar y controlar
+     * el menú principal de doctores. <br>
+     * Permite ejecutar operaciones CRUD sobre los doctores.
+     */
 	public void startMenuDoctor() {
 
         while (true) {
@@ -36,6 +59,10 @@ public class MenuDoctor {
             switch(optionDoctor) {
 
             case "1":
+            	
+            	/**
+            	 * Crea un nuevo doctor y lo agrega al sistema.
+            	 */
                 Doctor doctor = createDoctor();
                 if (doctor != null) {
                    doctorService.addDoctor(doctor);
@@ -43,6 +70,10 @@ public class MenuDoctor {
                 break;
 
             case "2":
+            	
+            	/**
+            	 * Muestra todos los doctores registrados.
+            	 */
             	 String result = "";
 
             	    for (Doctor d : doctorService.findAll()) {
@@ -57,6 +88,10 @@ public class MenuDoctor {
                 break;
 
             case "3":
+            	
+            	/**
+            	 * Busca un doctor utilizando su ID.
+            	 */
                 String idFind = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idFind)) break;
 
@@ -67,6 +102,10 @@ public class MenuDoctor {
                 break;
 
             case "4":
+            	
+            	/**
+            	 * Actualiza la información de un doctor existente.
+            	 */
                 String idUp = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idUp)) break;
 
@@ -78,6 +117,10 @@ public class MenuDoctor {
                 break;
 
             case "5":
+            	
+            	/**
+            	 * Elimina un doctor utilizando su ID.
+            	 */
                 String idDel = JOptionPane.showInputDialog("ID:");
                 if (!isNumber(idDel)) break;
 
@@ -85,6 +128,10 @@ public class MenuDoctor {
                 break;
 
             case "6":
+            	
+            	/**
+            	 * Regresa al menú principal.
+            	 */
                 return;
 
             default:
@@ -92,6 +139,14 @@ public class MenuDoctor {
             }
         }
     }
+	
+	/**
+	 * <b>Descripción:</b> Solicita los nuevos datos de un doctor
+	 * y crea un objeto actualizado.
+	 * 
+	 * @param id Representa el ID del doctor a actualizar.
+	 * @return Un nuevo objeto Doctor con la información actualizada.
+	 */
     public static Doctor updateDoctor(int id) {
     	
  	   String firstName = JOptionPane.showInputDialog("Nombre:");
@@ -117,6 +172,13 @@ public class MenuDoctor {
  	   
     }
     
+    /**
+     * <b>Descripción:</b> Solicita la información necesaria
+     * para crear un nuevo doctor.
+     * 
+     * @return Un nuevo objeto Doctor.
+     * @return null si el ID ingresado no es válido.
+     */
     public static Doctor createDoctor() {
  	
  	   String idDoctor = JOptionPane.showInputDialog("ID doctor:");
@@ -151,6 +213,14 @@ public class MenuDoctor {
  	   
     }
     
+    /**
+     * <b>Descripción:</b> Verifica si un texto contiene
+     * únicamente números.
+     * 
+     * @param text Representa el texto a validar.
+     * @return true si el texto es numérico.
+     * @return false si el texto es inválido.
+     */
     public static boolean isNumber(String text) {
         if (text == null || text.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo vacío");
