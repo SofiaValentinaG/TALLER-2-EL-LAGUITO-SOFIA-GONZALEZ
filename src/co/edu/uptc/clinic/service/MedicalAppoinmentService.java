@@ -7,10 +7,26 @@ import co.edu.uptc.clinic.domain.MedicalAppoinment;
 
 import co.edu.uptc.clinic.repository.MedicalAppoinmentRepository;
 
+/**
+ * <b>Descripción:</b> Clase de servicio encargada de gestionar
+ * las operaciones relacionadas con las citas médicas. <br>
+ * Esta clase valida la información antes de interactuar
+ * con el repositorio de citas médicas.
+ * 
+ * @author SofiaValentinaG
+ */
 public class MedicalAppoinmentService {
 	
+	/**
+	 * Repositorio encargado de almacenar las citas médicas.
+	 */
 	private  MedicalAppoinmentRepository  medicalAppoinmentRepository;
 
+	/**
+	 * <b>Descripción:</b> Constructor de la clase
+	 * MedicalAppoinmentService. <br>
+	 * Inicializa el repositorio de citas médicas.
+	 */
 	public MedicalAppoinmentService() {
 		
 		this.medicalAppoinmentRepository = new MedicalAppoinmentRepository();
@@ -18,6 +34,15 @@ public class MedicalAppoinmentService {
 		
 	}
 	
+	/**
+	 * <b>Descripción:</b> Valida la información de una cita médica. <br>
+	 * Verifica que la cita no sea nula y que tenga
+	 * paciente, doctor y prioridad registrados.
+	 * 
+	 * @param medicalAppoinment Representa la cita médica a validar.
+	 * @return true si la cita es válida.
+	 * @return false si la cita es inválida.
+	 */
 	public boolean validateMedicalAppoinment(MedicalAppoinment medicalAppoinment) {
 		if( medicalAppoinment == null) {
 			System.out.println("ingrese una cita valita");
@@ -32,6 +57,15 @@ public class MedicalAppoinmentService {
 		
 	}
 	
+	/**
+	 * <b>Descripción:</b> Agrega una nueva cita médica al repositorio. <br>
+	 * Primero valida que el ID sea correcto y que la cita
+	 * tenga información válida.
+	 * 
+	 * @param medicalAppoinment Representa la cita médica a agregar.
+	 * @return true si la cita fue agregada correctamente.
+	 * @return false si no pudo agregarse.
+	 */
 	public boolean addMedicalAppoinment(MedicalAppoinment medicalAppoinment) {
 		   if(medicalAppoinment.getIdMedicalAppoiment() < 1) {
 			 return false;  
@@ -43,7 +77,11 @@ public class MedicalAppoinmentService {
 	}
 	
 
-
+	/**
+	 * <b>Descripción:</b> Obtiene todas las citas médicas registradas.
+	 * 
+	 * @return Conjunto con todas las citas médicas almacenadas.
+	 */
    public Set<MedicalAppoinment> findAll(){
 	   return this.medicalAppoinmentRepository.findAll();
 	   
@@ -51,6 +89,13 @@ public class MedicalAppoinmentService {
 	   
    }
    
+   /**
+    * <b>Descripción:</b> Busca una cita médica utilizando su ID.
+    * 
+    * @param idMedicalAppoiment Representa el ID de la cita médica.
+    * @return La cita médica encontrada.
+    * @return null si no existe una cita con ese ID.
+    */
       public MedicalAppoinment findById(int idMedicalAppoiment) {
 	   if(idMedicalAppoiment < 1) {
 		   return null;
@@ -59,6 +104,16 @@ public class MedicalAppoinmentService {
 	   
        }
       
+      /**
+       * <b>Descripción:</b> Actualiza la información de una cita médica. <br>
+       * Primero valida la nueva cita y verifica que exista
+       * previamente en el repositorio.
+       * 
+       * @param newMedicalAppoinment Representa la nueva información
+       * de la cita médica.
+       * @return true si la actualización fue exitosa.
+       * @return false si no pudo realizarse.
+       */
       public boolean updateMedicalAppoinment(MedicalAppoinment newMedicalAppoinment) {
     		if(this.validateMedicalAppoinment(newMedicalAppoinment)) {
     			MedicalAppoinment oldMedicalAppoinment= this.medicalAppoinmentRepository.findById(newMedicalAppoinment.getIdMedicalAppoiment());
@@ -72,6 +127,13 @@ public class MedicalAppoinmentService {
     	  
       }
       
+      /**
+       * <b>Descripción:</b> Elimina una cita médica utilizando su ID.
+       * 
+       * @param idMedicalAppoinment Representa el ID de la cita médica.
+       * @return true si la cita fue eliminada correctamente.
+       * @return false si no pudo eliminarse.
+       */
       public boolean deleteMedicalAppoinment(int idMedicalAppoinment) {
     	  if(idMedicalAppoinment < 1) {
     		  return false;
@@ -82,4 +144,3 @@ public class MedicalAppoinmentService {
     	  
       }
 }
-     
