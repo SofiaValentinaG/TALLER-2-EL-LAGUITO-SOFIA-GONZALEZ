@@ -111,9 +111,22 @@ public class MenuPatient {
      	        IdentificationTypeEnum.values(),
      	        IdentificationTypeEnum.CC
      	);
+        Patient patient=new Patient (identificationType,id, firstName, lastName, email,priority);
+        String medications = JOptionPane.showInputDialog(
+                "Ingrese los medicamentos separados por coma Ejemplo: Acetaminofen, Ibuprofeno,etc.."
+        );
+        if (medications != null && !medications.isEmpty()) {
+
+            String[] medsArray = medications.split(",");
+
+            for (String med : medsArray) {
+                patient.getMedicationHistory().add(med.trim());
+            }
+        }
+        
         
 
-        return  new Patient (identificationType,id, firstName, lastName, email,priority);
+        return patient;
  	   
     }
     
@@ -144,9 +157,23 @@ public class MenuPatient {
      	        IdentificationTypeEnum.values(),
      	        IdentificationTypeEnum.CC
      	);
+        Patient patient= new Patient (identificationType,id, firstName, lastName, email,priority);
+  	   
+       
+        String medications = JOptionPane.showInputDialog(
+                "Ingrese los medicamentos separados por coma Ejemplo: Acetaminofen, Ibuprofeno,etc.."
+        );
+        if (medications != null && !medications.isEmpty()) {
+
+            String[] medsArray = medications.split(",");
+
+            for (String med : medsArray) {
+                patient.getMedicationHistory().add(med.trim());
+            }
+        }
         
 
-        return  new Patient (identificationType,id, firstName, lastName, email,priority);
+        return  patient;
  	   
     }
     
